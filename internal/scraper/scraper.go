@@ -3,6 +3,8 @@ package scraper
 import (
 	"fmt"
 	"html/template"
+	"io"
+	"log"
 	"net/http"
 	"os"
 	"slices"
@@ -35,14 +37,53 @@ var serverMap = map[string][]string{
 	"Ergenekon": {"Ergenekon"},
 }
 
+const nbRetries = 5
+const retryInSeconds = 10
+const clientTimeoutSeconds = 30
+
 // scrapePlayers scrapes player data for the selected server
 func scrapePlayers(server string) ([]Player, error) {
+	var err error
 	url := "https://knightonline1.com/?p=kim_nerede"
-	resp, err := http.Get(url)
+
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return nil, fmt.Errorf("failed to fetch the page: %v", err)
+		log.Fatalf("Failed to create request: %s", err)
+		return nil, fmt.Errorf("Failed to create request: %s", err)
 	}
-	defer resp.Body.Close()
+
+	client := &http.Client{
+		Timeout: clientTimeoutSeconds * time.Second,
+	}
+
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+	var resp *http.Response
+	retries := 0
+	for retries = 0; retries < nbRetries; retries++ {
+		resp, err = client.Do(req)
+		if err != nil {
+			log.Fatalf("failed to fetch the page: %s", err)
+		}
+
+		if err == nil && resp.StatusCode == http.StatusOK {
+			defer resp.Body.Close()
+			break
+		}
+
+		if resp.StatusCode != http.StatusOK {
+			bodyBytes, err := io.ReadAll(resp.Body)
+			if err != nil {
+				log.Fatalf("failed to read response body, error with code: %d", resp.StatusCode)
+			}
+			bodyString := string(bodyBytes)
+			log.Printf("Error: Failed to fetch the page, status code: %d, message: %s", resp.StatusCode, bodyString)
+			time.Sleep(retryInSeconds * time.Second) // wait for retry
+		}
+	}
+
+	if retries >= nbRetries {
+		return nil, fmt.Errorf("failed to fetch the page after %d tries: %s", retries, err)
+	}
 
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
@@ -91,6 +132,7 @@ func GenerateHTML() error {
 		if err != nil {
 			return fmt.Errorf("error scraping players for server: %s, err: %w", server, err)
 		}
+		log.Printf("Found %d players for server: %s", len(players), server)
 
 		serversData = append(serversData, ServerData{
 			Server:  server,
