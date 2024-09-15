@@ -3,7 +3,7 @@ name: Update KO1 English Players
 on:
   schedule:
     - cron: '*/5 * * * *'  # Runs every 5 minutes
-  workflow_dispatch: # Allows manual trigger
+  workflow_dispatch:        # Allows for manual triggering
 
 jobs:
   build:
@@ -21,13 +21,14 @@ jobs:
     - name: Install dependencies
       run: go get -v ./...
 
-    - name: Run Go scraper to generate html file
-      run: go run ./cmd/ko1-eng-players/main.go
+    - name: Run Go scraper
+      run: go run ./cmd/ko1-eng-players
 
-    - name: Commit and Push generated HTML
+    - name: Commit and push to gh-pages branch
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "GitHub Actions"
-        git add index.html
-        git commit -m "Update players list"
-        git push origin gh-pages
+        git checkout -B gh-pages                 # Force create or switch to gh-pages
+        git add index.html                       # Stage the generated index.html
+        git commit -m "Update players list"      # Commit the changes
+        git push origin gh-pages --force         # Force-push to gh-pages branch
