@@ -36,10 +36,6 @@ jobs:
         # Remove all files tracked by Git to avoid pushing Go code and other unwanted files
         git rm -rf .
         
-        # Copy only index.html and internal/ui folder to the gh-pages branch
-        cp index.html ./         # Add index.html
-        mkdir -p ./internal/ui    # Create the internal/ui directory
-        cp -r ./internal/ui/* ./internal/ui/  # Copy the UI files
         
         # Stage the required files
         git add index.html
