@@ -36,10 +36,26 @@ jobs:
         # Remove all files tracked by Git to avoid pushing Go code and other unwanted files
         git rm -rf .
         
+        # Ensure index.html exists
+        if [ -f index.html ]; then
+          echo "index.html exists."
+        else
+          echo "index.html not found! Exiting."
+          exit 1
+        fi
         
-        # Stage the required files
+        # Ensure internal/ui directory and files exist before adding them
+        if [ -d ./internal/ui ]; then
+          echo "Adding internal/ui files."
+          mkdir -p ./internal/ui    # Create the internal/ui directory
+          cp -r ./internal/ui/* ./internal/ui/  # Copy the UI files
+          git add internal/ui
+        else
+          echo "internal/ui directory not found!"
+        fi
+        
+        # Add and commit index.html
         git add index.html
-        git add internal/ui
         
         # Commit and force push to the gh-pages branch
         git commit -m "Update players list"
