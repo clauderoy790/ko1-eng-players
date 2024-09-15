@@ -98,7 +98,7 @@ func GenerateHTML() error {
 	}
 
 	// Parse and execute the template
-	tmpl, err := template.ParseFiles("internal/scraper/template.html")
+	tmpl, err := template.ParseFiles("internal/ui/template.html")
 	if err != nil {
 		return fmt.Errorf("error parsing template: %v", err)
 	}
