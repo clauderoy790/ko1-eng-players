@@ -1,0 +1,33 @@
+name: Update KO1 English Players
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: '1.23'
+
+    - name: Install dependencies
+      run: go get -v ./...
+
+    - name: Run Go scraper to generate html file
+      run: go run ./cmd/ko1-eng-players/main.go
+
+    - name: Commit and Push generated HTML
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "GitHub Actions"
+        git add index.html
+        git commit -m "Update players list"
+        git push origin gh-pages
