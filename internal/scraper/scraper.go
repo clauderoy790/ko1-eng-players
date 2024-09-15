@@ -102,9 +102,9 @@ func scrapePlayers(server string) ([]Player, error) {
 				playerName := row.Find("td").Eq(3).Find("a").Text()
 				location := row.Find("td").Eq(1).Text()
 				nation, _ := row.Find("td").Eq(6).Find("img").Attr("src")
-				nationImg := "./karus.gif"
+				nationImg := "./internal/ui/karus.gif"
 				if strings.Contains(nation, "elmo") {
-					nationImg = "./elmo.gif"
+					nationImg = "./internal/ui/elmo.gif"
 				}
 
 				players = append(players, Player{
