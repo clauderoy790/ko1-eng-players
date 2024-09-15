@@ -15,6 +15,7 @@ import (
 type Player struct {
 	Name     string
 	Location string
+	NationImg string
 }
 
 type ServerData struct {
@@ -59,9 +60,16 @@ func scrapePlayers(server string) ([]Player, error) {
 				// Extract the player's name and location
 				playerName := row.Find("td").Eq(3).Find("a").Text()
 				location := row.Find("td").Eq(1).Text()
+				nation, _ := row.Find("td").Eq(6).Find("img").Attr("src")
+				nationImg := "./karus.gif"
+				if strings.Contains(nation, "elmo") {
+					nationImg = "./elmo.gif"
+				}
+
 				players = append(players, Player{
 					Name:     strings.TrimSpace(playerName),
 					Location: strings.TrimSpace(location),
+					NationImg: nationImg,
 				})
 			}
 		}

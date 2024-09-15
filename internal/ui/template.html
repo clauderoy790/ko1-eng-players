@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>English Players on Knight Online Servers</title>
+  <title>KO1 English-speaking Players</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -45,10 +45,10 @@
 </head>
 <body>
 
-  <h1>English-speaking Players on Knight Online Servers</h1>
+  <h1>KO1 English-speaking Players</h1>
   <p>Updated at: {{.UpdatedAt}}</p>
 
-  <div class="server-section">
+  <div id="combo" class="server-section">
     <label for="server-select">Select Server:</label>
     <select id="server-select" onchange="onServerChange()">
       {{range .Servers}}
@@ -58,13 +58,13 @@
   </div>
 
   {{range .ServersData}}
-    <div class="server-section">
-      <h2>{{.Server}} Server</h2>
+    <div id="{{.Server}}" class="server-section">
       <table>
         <thead>
           <tr>
             <th>Player Name</th>
             <th>Location</th>
+            <th>Nation</th>
           </tr>
         </thead>
         <tbody>
@@ -73,11 +73,12 @@
               <tr>
                 <td>{{.Name}}</td>
                 <td>{{.Location}}</td>
+                <td><img src="{{.NationImg}}" alt="Nation Image" style="width: 24px; height: 24px;"></td>
               </tr>
             {{end}}
           {{else}}
             <tr>
-              <td colspan="2">No players found.</td>
+              <td colspan="3">No players found.</td>
             </tr>
           {{end}}
         </tbody>
@@ -91,7 +92,10 @@
       const sections = document.querySelectorAll('.server-section');
 
       sections.forEach((section) => {
-        if (section.querySelector('h2').innerText.includes(server)) {
+        const id = section.getAttribute('id');
+        if (id === 'combo') { return; } // skip combo box
+
+        if (id === server) {
           section.style.display = 'block';
         } else {
           section.style.display = 'none';
