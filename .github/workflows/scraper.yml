@@ -33,29 +33,25 @@ jobs:
         # Switch to a new clean gh-pages branch
         git checkout --orphan gh-pages
         
-        # Remove all files tracked by Git to avoid pushing Go code and other unwanted files
+        # Move index.html and internal/ui folder to a safe location
+        mkdir -p ./deploy/ui
+        cp -r ./internal/ui/* ./deploy/ui/  # Copy the UI files to the deploy folder
+        cp index.html ./deploy/             # Copy the index.html to the deploy folder
+        
+        # Remove all tracked files
         git rm -rf .
         
-        # Ensure index.html exists
-        if [ -f index.html ]; then
-          echo "index.html exists."
-        else
-          echo "index.html not found! Exiting."
-          exit 1
-        fi
+        # Move index.html and internal/ui back from the deploy folder
+        mv ./deploy/index.html ./index.html
+        mkdir -p ./internal/ui
+        mv ./deploy/ui/* ./internal/ui/     # Move the UI files back to internal/ui
         
-        # Ensure internal/ui directory and files exist before adding them
-        if [ -d ./internal/ui ]; then
-          echo "Adding internal/ui files."
-          mkdir -p ./internal/ui    # Create the internal/ui directory
-          cp -r ./internal/ui/* ./internal/ui/  # Copy the UI files
-          git add internal/ui
-        else
-          echo "internal/ui directory not found!"
-        fi
+        # Clean up deploy folder
+        rm -rf ./deploy
         
-        # Add and commit index.html
+        # Add the required files to the gh-pages branch
         git add index.html
+        git add internal/ui
         
         # Commit and force push to the gh-pages branch
         git commit -m "Update players list"
