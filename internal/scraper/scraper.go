@@ -13,8 +13,8 @@ import (
 )
 
 type Player struct {
-	Name     string
-	Location string
+	Name      string
+	Location  string
 	NationImg string
 }
 
@@ -67,8 +67,8 @@ func scrapePlayers(server string) ([]Player, error) {
 				}
 
 				players = append(players, Player{
-					Name:     strings.TrimSpace(playerName),
-					Location: strings.TrimSpace(location),
+					Name:      strings.TrimSpace(playerName),
+					Location:  strings.TrimSpace(location),
 					NationImg: nationImg,
 				})
 			}
@@ -99,8 +99,9 @@ func GenerateHTML() error {
 	}
 
 	// Prepare the page data
+	location, _ := time.LoadLocation("America/New_York") // Load the EST time zone
 	data := PageData{
-		UpdatedAt:   time.Now().Format(time.RFC1123),
+		UpdatedAt:   time.Now().In(location).Format(time.RFC1123),
 		ServersData: serversData,
 		Servers:     servers,
 	}
