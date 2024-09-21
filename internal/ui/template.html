@@ -14,11 +14,6 @@
         h1, h2 {
             color: #333;
         }
-        select {
-            padding: 10px;
-            margin: 20px 0;
-            font-size: 16px;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -40,6 +35,7 @@
         }
         .server-section {
             margin-bottom: 40px;
+            display: none;
         }
         .tab-container {
             display: flex;
@@ -65,30 +61,35 @@
         .table-container.active {
             display: block;
         }
+        #server-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #server-tabs .tab {
+            margin: 0 5px;
+        }
     </style>
 </head>
 <body>
     <h1>KO1 English-speaking Players</h1>
     <p>Updated at: {{.UpdatedAt}}</p>
-    <div id="combo" class="server-section">
-        <label for="server-select">Select Server:</label>
-        <select id="server-select" onchange="onServerChange()">
-            {{range .Servers}}
-            <option value="{{.}}">{{.}}</option>
-            {{end}}
-        </select>
+    <div id="server-tabs" class="tab-container">
+        {{range $index, $server := .Servers}}
+        <button class="tab" onclick="switchServer(this, '{{$server}}')">{{$server}}</button>
+        {{end}}
     </div>
-    {{range .Servers}}
-    <div id="{{.}}" class="server-section">
+    {{range $index, $server := .Servers}}
+    <div id="{{$server}}" class="server-section">
         <div class="tab-container">
-            <button class="tab active" onclick="switchTab(this, 'online-{{.}}')">
-                Currently Online ({{len (index $.OnlinePlayers .)}})
+            <button class="tab active" onclick="switchTab(this, 'online-{{$server}}')">
+                Currently Online ({{len (index $.OnlinePlayers $server)}})
             </button>
-            <button class="tab" onclick="switchTab(this, 'recent-{{.}}')">
-                Recently Active ({{len (index $.RecentPlayers .)}})
+            <button class="tab" onclick="switchTab(this, 'recent-{{$server}}')">
+                Recently Active ({{len (index $.RecentPlayers $server)}})
             </button>
         </div>
-        <div id="online-{{.}}" class="table-container active">
+        <div id="online-{{$server}}" class="table-container active">
             <table>
                 <thead>
                     <tr>
@@ -98,8 +99,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{if index $.OnlinePlayers .}}
-                        {{range index $.OnlinePlayers .}}
+                    {{if index $.OnlinePlayers $server}}
+                        {{range index $.OnlinePlayers $server}}
                         <tr>
                             <td>{{.Name}}</td>
                             <td>{{.Location}}</td>
@@ -116,7 +117,7 @@
                 </tbody>
             </table>
         </div>
-        <div id="recent-{{.}}" class="table-container">
+        <div id="recent-{{$server}}" class="table-container">
             <table>
                 <thead>
                     <tr>
@@ -127,8 +128,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{if index $.RecentPlayers .}}
-                        {{range index $.RecentPlayers .}}
+                    {{if index $.RecentPlayers $server}}
+                        {{range index $.RecentPlayers $server}}
                         <tr>
                             <td>{{.Name}}</td>
                             <td>{{.Location}}</td>
@@ -149,24 +150,23 @@
     </div>
     {{end}}
     <script>
-        function onServerChange() {
-            const server = document.getElementById('server-select').value;
-            const sections = document.querySelectorAll('.server-section');
-            sections.forEach((section) => {
-                const id = section.getAttribute('id');
-                if (id === 'combo') { return; } // skip combo box
-                if (id === server) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
-                }
-            });
+        function switchServer(tabElement, serverId) {
+            // Deactivate all server tabs and hide all server sections
+            document.querySelectorAll('#server-tabs .tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.server-section').forEach(section => section.style.display = 'none');
+            
+            // Activate selected server tab and show corresponding section
+            tabElement.classList.add('active');
+            document.getElementById(serverId).style.display = 'block';
+
+            // Save the selected server to localStorage
+            localStorage.setItem('selectedServer', serverId);
         }
 
         function switchTab(tabElement, contentId) {
-            // Deactivate all tabs and hide all content
+            // Deactivate all tabs and hide all content within the server section
             const parentSection = tabElement.closest('.server-section');
-            parentSection.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            parentSection.querySelectorAll('.tab-container .tab').forEach(tab => tab.classList.remove('active'));
             parentSection.querySelectorAll('.table-container').forEach(container => container.classList.remove('active'));
             
             // Activate selected tab and show corresponding content
@@ -174,8 +174,25 @@
             document.getElementById(contentId).classList.add('active');
         }
 
-        // Default server to show
-        onServerChange();
+        // Function to load the last selected server or default to the first one
+        function loadSelectedServer() {
+            const savedServer = localStorage.getItem('selectedServer');
+            const serverTabs = document.querySelectorAll('#server-tabs .tab');
+            let selectedTab;
+
+            if (savedServer && document.getElementById(savedServer)) {
+                selectedTab = Array.from(serverTabs).find(tab => tab.textContent === savedServer);
+            }
+
+            if (!selectedTab) {
+                selectedTab = serverTabs[0]; // Default to first server if saved one not found
+            }
+
+            switchServer(selectedTab, selectedTab.textContent);
+        }
+
+        // Call loadSelectedServer when the page loads
+        window.onload = loadSelectedServer;
     </script>
 </body>
 </html>
