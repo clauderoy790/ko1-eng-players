@@ -29,6 +29,15 @@ func loadLastOnlinePlayers() (LastOnlinePlayers, error) {
 	if err = json.Unmarshal(b, &lastOnline); err != nil {
 		return lastOnline, fmt.Errorf("error unmarshalling last online json: %w", err)
 	}
+
+	// set last seen on players
+	lastSeen := utils.TimeToString(lastOnline.UpdateTime)
+	for k := range lastOnline.Players {
+		for i := range lastOnline.Players[k] {
+			lastOnline.Players[k][i].LastSeen = lastSeen
+		}
+	}
+
 	return lastOnline, nil
 }
 
@@ -42,9 +51,11 @@ func getOfflinePlayers(lastOnline *LastOnlinePlayers, currentPlayers map[string]
 
 		for name, player := range lastMap {
 			if _, ok := currentMap[name]; !ok {
+				fmt.Println("player has gone offline: ", player)
 				nowOffline[server] = append(nowOffline[server], player)
 			}
 		}
+		nowOffline[server] = removeDuplicates(nowOffline[server])
 	}
 
 	return nowOffline

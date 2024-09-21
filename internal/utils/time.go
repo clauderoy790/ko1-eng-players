@@ -22,7 +22,6 @@ func Now() *time.Time {
 	return &t
 }
 
-// todo here implement
 func TimeToString(t *time.Time) string {
 	return t.In(location).Format(time.RFC1123)
 }

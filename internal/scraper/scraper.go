@@ -16,7 +16,6 @@ import (
 	"github.com/clauderoy790/ko1-eng-players/internal/utils"
 )
 
-
 // sometimes server is displayed differently so we keep track of that
 var serverMap = map[string][]string{
 	"Otuken":    {"Ötüken", "Otuken"},
@@ -136,6 +135,11 @@ func GenerateHTML() error {
 		return fmt.Errorf("error loading current players: %w", err)
 	}
 
+	// remove/duplicates,sort
+	for k := range currentPlayers {
+		currentPlayers[k] = removeDuplicates(currentPlayers[k])
+	}
+
 	// remove any player that is currently online from the recent list
 	removeRecentPlayers(currentPlayers)
 
@@ -168,7 +172,7 @@ func GenerateHTML() error {
 	updateRecentPlayersLastSeenForDisplay(now)
 
 	var servers []string
-	for k, _ := range serverMap {
+	for k := range serverMap {
 		servers = append(servers, k)
 	}
 
