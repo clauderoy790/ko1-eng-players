@@ -10,3 +10,10 @@ save previous player
 
 for ui:
 have all the ui under a div with id = energekon id = otuken so we can hide depending on combo box
+
+*** How to determine character server
+otuken sv 0
+https://knightonline1.com/?p=userdetay&karakter=Arianna&sv=0
+
+energekon sv 3
+https://knightonline1.com/?p=userdetay&karakter=Arianna&sv=3

@@ -6,32 +6,55 @@
     <title>KO1 English-speaking Players</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Trebuchet MS', sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color: #111;
+            color: #eee;
         }
         h1, h2 {
-            color: #333;
+            color: #ff3333;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px #000;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 1.8em;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            background-color: #222;
         }
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #444;
         }
         th, td {
             padding: 12px;
             text-align: left;
         }
         th {
-            background-color: #4caf50;
+            background-color: #ff3333;
             color: white;
+            text-shadow: 1px 1px 3px #000;
+        }
+        td {
+            color: #ddd;
         }
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #191919;
+        }
+        tr:nth-child(odd) {
+            background-color: #111;
         }
         .server-section {
             margin-bottom: 40px;
@@ -39,21 +62,29 @@
         }
         .tab-container {
             display: flex;
+            justify-content: center;
             margin-bottom: 20px;
         }
         .tab {
             padding: 10px 20px;
-            background-color: #ddd;
+            background-color: #333;
+            color: #eee;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            margin: 0 10px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .tab:hover {
-            background-color: #ccc;
+            background-color: #ff3333;
+            transform: scale(1.05);
         }
         .tab.active {
-            background-color: #4caf50;
+            background-color: #ff3333;
             color: white;
+            border-bottom: 4px solid #e60000;
+            transform: scale(1.1);
         }
         .table-container {
             display: none;
@@ -69,16 +100,35 @@
         #server-tabs .tab {
             margin: 0 5px;
         }
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #bbb;
+            margin-top: 40px;
+            padding: 10px;
+            border-top: 1px solid #444;
+        }
+        footer a {
+            color: #ff3333;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <h1>KO1 English-speaking Players</h1>
     <p>Updated at: {{.UpdatedAt}}</p>
+
+    <!-- Server Tabs -->
     <div id="server-tabs" class="tab-container">
         {{range $index, $server := .Servers}}
         <button class="tab" onclick="switchServer(this, '{{$server}}')">{{$server}}</button>
         {{end}}
     </div>
+
+    <!-- Server Sections -->
     {{range $index, $server := .Servers}}
     <div id="{{$server}}" class="server-section">
         <div class="tab-container">
@@ -89,6 +139,8 @@
                 Recently Active ({{len (index $.RecentPlayers $server)}})
             </button>
         </div>
+
+        <!-- Online Players Table -->
         <div id="online-{{$server}}" class="table-container active">
             <table>
                 <thead>
@@ -117,6 +169,8 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Recently Active Players Table -->
         <div id="recent-{{$server}}" class="table-container">
             <table>
                 <thead>
@@ -149,6 +203,11 @@
         </div>
     </div>
     {{end}}
+
+    <footer>
+        Made by <a href="#">Claude<sup>2</sup></a>. On the road to upgrading an <a href="#">Iron Impact</a> to +10.
+    </footer>
+
     <script>
         function switchServer(tabElement, serverId) {
             // Deactivate all server tabs and hide all server sections
