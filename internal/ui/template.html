@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KO1 English-speaking Players</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -16,6 +17,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
         h1 {
             color: #ff3333;
@@ -104,23 +106,19 @@
             padding: 10px;
             border-top: 1px solid #444;
         }
-
         footer a {
             color: #ff3333;
             text-decoration: none;
             cursor: default;
         }
-
         footer a:visited {
             color: #ff3333;
             cursor: default;
         }
-
         footer a:hover {
             color: #ff3333;
             cursor: default;
         }
-
         footer a:active {
             color: #ff3333;
             cursor: default;
@@ -128,10 +126,37 @@
         img {
             vertical-align: middle;
         }
+        .github-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        .github-link:hover {
+            color: #ff3333;
+        }
+        .github-link i {
+            margin-right: 5px;
+        }
+        @media (max-width: 600px) {
+            .github-link {
+                top: 5px;
+                right: 5px;
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="https://github.com/clauderoy790/ko1-eng-players/" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> View on GitHub
+        </a>
         <h1>KO1 English-speaking Players</h1>
         <p>Updated at: {{.UpdatedAt}}</p>
         <div id="server-tabs" class="tab-container">
@@ -211,12 +236,7 @@
         {{end}}
 
         <footer>
-          Made by <a href="https://github.com/clauderoy790">Claude<sup>2</sup></a
-          >. On the road to upgrading an
-          <a href="https://wiki.korehberi.com/index.php/Iron_Impact"
-            >Iron Impact</a
-          >
-          to +10.
+          Made by <a href="https://github.com/clauderoy790">Claude<sup>2</sup></a>. On the road to upgrading an <a href="https://wiki.korehberi.com/index.php/Iron_Impact">Iron Impact</a> to +10.
         </footer>
     </div>
 
