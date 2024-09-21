@@ -22,9 +22,12 @@ var serverMap = map[string][]string{
 	"Ergenekon": {"Ergenekon"},
 }
 
-const nbRetries = 5
-const retryInSeconds = 10
-const clientTimeoutSeconds = 30
+const (
+	websiteLink          = "https://knightonline1.com/?p=kim_nerede"
+	nbRetries            = 5
+	retryInSeconds       = 10
+	clientTimeoutSeconds = 30
+)
 
 // scrapeCurrentPlayers scrapes site data to find current players
 func scrapeCurrentPlayers() (map[string][]Player, error) {
@@ -113,6 +116,11 @@ func scrapeCurrentPlayers() (map[string][]Player, error) {
 		}
 	})
 
+	playerCount := 0
+	for _, p := range players {
+		playerCount += len(p)
+	}
+	fmt.Printf("found %d English-speaking players across all servers\n", playerCount)
 	return players, nil
 }
 
@@ -184,13 +192,6 @@ func GenerateHTML() error {
 		Servers:       servers,
 	}
 
-	b, err := json.MarshalIndent(data, "", "  ")
-	if err != nil {
-		fmt.Println("error marshaling PageData: ", data)
-	} else {
-		fmt.Printf("Using PageData: \n %s \n", string(b))
-	}
-
 	// Parse and execute the template
 	tmpl, err := template.ParseFiles("internal/ui/template.html")
 	if err != nil {
@@ -206,7 +207,11 @@ func GenerateHTML() error {
 
 	// Execute the template with the data
 	if err := tmpl.Execute(file, data); err != nil {
-		return fmt.Errorf("error executing template: %v", err)
+		b, err := json.MarshalIndent(data, "", "  ")
+		if err != nil {
+			fmt.Println("error marshaling PageData: ", data)
+		}
+		return fmt.Errorf("error executing template: %s with data: %s", err.Error(), string(b))
 	}
 
 	return nil
