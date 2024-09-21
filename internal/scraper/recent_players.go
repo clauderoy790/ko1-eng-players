@@ -106,5 +106,10 @@ func saveRecentPlayers() error {
 	if err := sortRecentPlayers(); err != nil {
 		fmt.Printf("error sorting recent players: %s\n", err.Error())
 	}
-	return utils.SaveJSON(recentPlayersFile, recentPlayers)
+
+	path := os.Getenv("RECENT_PLAYERS")
+	if path == "" {
+		path = recentPlayersFile
+	}
+	return utils.SaveJSON(path, recentPlayers)
 }

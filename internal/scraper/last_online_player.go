@@ -62,5 +62,9 @@ func getOfflinePlayers(lastOnline *LastOnlinePlayers, currentPlayers map[string]
 }
 
 func saveLastOnlinePlayers(lastOnlinePlayers *LastOnlinePlayers) error {
-	return utils.SaveJSON(lastOnlinePlayerFile, lastOnlinePlayers)
+	path := os.Getenv("LAST_ONLINE_PLAYERS")
+	if path == "" {
+		path = lastOnlinePlayerFile
+	}
+	return utils.SaveJSON(path, lastOnlinePlayers)
 }
