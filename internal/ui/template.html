@@ -1,146 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KO1 English-speaking Players</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f0f0f0;
-      }
-      h1,
-      h2 {
-        color: #333;
-      }
-      select {
-        padding: 10px;
-        margin: 20px 0;
-        font-size: 16px;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
-      table,
-      th,
-      td {
-        border: 1px solid #ddd;
-      }
-      th,
-      td {
-        padding: 12px;
-        text-align: left;
-      }
-      th {
-        background-color: #4caf50;
-        color: white;
-      }
-      tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
-      .server-section {
-        margin-bottom: 40px;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        select {
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .server-section {
+            margin-bottom: 40px;
+        }
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .tab:hover {
+            background-color: #ccc;
+        }
+        .tab.active {
+            background-color: #4caf50;
+            color: white;
+        }
+        .table-container {
+            display: none;
+        }
+        .table-container.active {
+            display: block;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <h1>KO1 English-speaking Players</h1>
     <p>Updated at: {{.UpdatedAt}}</p>
     <div id="combo" class="server-section">
-      <label for="server-select">Select Server:</label>
-      <select id="server-select" onchange="onServerChange()">
-        {{range .Servers}}
-        <option value="{{.}}">{{.}}</option>
-        {{end}}
-      </select>
+        <label for="server-select">Select Server:</label>
+        <select id="server-select" onchange="onServerChange()">
+            {{range .Servers}}
+            <option value="{{.}}">{{.}}</option>
+            {{end}}
+        </select>
     </div>
-
     {{range .Servers}}
     <div id="{{.}}" class="server-section">
-      <h2>Online Players</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Player Name</th>
-            <th>Location</th>
-            <th>Nation</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{if index $.OnlinePlayers .}} {{range index $.OnlinePlayers .}}
-          <tr>
-            <td>{{.Name}}</td>
-            <td>{{.Location}}</td>
-            <td>
-              <img
-                src="{{.NationImg}}"
-                alt="Nation Image"
-                style="width: 24px; height: 24px"
-              />
-            </td>
-          </tr>
-          {{end}} {{else}}
-          <tr>
-            <td colspan="3">No one is online right now.</td>
-          </tr>
-          {{end}}
-        </tbody>
-      </table>
-
-      <h2>Recently Online Players</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Player Name</th>
-            <th>Location</th>
-            <th>Nation</th>
-            <th>Last Seen</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{if index $.RecentPlayers .}} {{range index $.RecentPlayers .}}
-          <tr>
-            <td>{{.Name}}</td>
-            <td>{{.Location}}</td>
-            <td>
-              <img
-                src="{{.NationImg}}"
-                alt="Nation Image"
-                style="width: 24px; height: 24px"
-              />
-            </td>
-            <td>{{.LastSeen}}</td>
-          </tr>
-          {{end}} {{else}}
-          <tr>
-            <td colspan="4">No one was online recently.</td>
-          </tr>
-          {{end}}
-        </tbody>
-      </table>
+        <div class="tab-container">
+            <button class="tab active" onclick="switchTab(this, 'online-{{.}}')">
+                Currently Online ({{len (index $.OnlinePlayers .)}})
+            </button>
+            <button class="tab" onclick="switchTab(this, 'recent-{{.}}')">
+                Recently Active ({{len (index $.RecentPlayers .)}})
+            </button>
+        </div>
+        <div id="online-{{.}}" class="table-container active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Location</th>
+                        <th>Nation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{if index $.OnlinePlayers .}}
+                        {{range index $.OnlinePlayers .}}
+                        <tr>
+                            <td>{{.Name}}</td>
+                            <td>{{.Location}}</td>
+                            <td>
+                                <img src="{{.NationImg}}" alt="Nation Image" style="width: 24px; height: 24px" />
+                            </td>
+                        </tr>
+                        {{end}}
+                    {{else}}
+                        <tr>
+                            <td colspan="3">No one is online right now.</td>
+                        </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+        <div id="recent-{{.}}" class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Location</th>
+                        <th>Nation</th>
+                        <th>Last Seen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{if index $.RecentPlayers .}}
+                        {{range index $.RecentPlayers .}}
+                        <tr>
+                            <td>{{.Name}}</td>
+                            <td>{{.Location}}</td>
+                            <td>
+                                <img src="{{.NationImg}}" alt="Nation Image" style="width: 24px; height: 24px" />
+                            </td>
+                            <td>{{.LastSeen}}</td>
+                        </tr>
+                        {{end}}
+                    {{else}}
+                        <tr>
+                            <td colspan="4">No one was online recently.</td>
+                        </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
     </div>
     {{end}}
-
     <script>
-      function onServerChange() {
-        const server = document.getElementById('server-select').value;
-        const sections = document.querySelectorAll('.server-section');
-        sections.forEach((section) => {
-          const id = section.getAttribute('id');
-          if (id === 'combo') { return; } // skip combo box
-          if (id === server) {
-            section.style.display = 'block';
-          } else {
-            section.style.display = 'none';
-          }
-        });
-      }
-      // Default server to show
-      onServerChange();
+        function onServerChange() {
+            const server = document.getElementById('server-select').value;
+            const sections = document.querySelectorAll('.server-section');
+            sections.forEach((section) => {
+                const id = section.getAttribute('id');
+                if (id === 'combo') { return; } // skip combo box
+                if (id === server) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        function switchTab(tabElement, contentId) {
+            // Deactivate all tabs and hide all content
+            const parentSection = tabElement.closest('.server-section');
+            parentSection.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            parentSection.querySelectorAll('.table-container').forEach(container => container.classList.remove('active'));
+            
+            // Activate selected tab and show corresponding content
+            tabElement.classList.add('active');
+            document.getElementById(contentId).classList.add('active');
+        }
+
+        // Default server to show
+        onServerChange();
     </script>
-  </body>
+</body>
 </html>
