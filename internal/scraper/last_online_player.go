@@ -20,7 +20,7 @@ func loadLastOnlinePlayers() (LastOnlinePlayers, error) {
 	lastOnline := LastOnlinePlayers{
 		Players: make(map[string][]Player),
 	}
-	b, err := os.ReadFile(lastOnlinePlayerFile)
+	b, err := os.ReadFile(getLastOnlinePlayersFilePath())
 	if err != nil {
 		fmt.Printf("error loading last online players: %s\n", err.Error())
 		return lastOnline, nil
@@ -62,9 +62,14 @@ func getOfflinePlayers(lastOnline *LastOnlinePlayers, currentPlayers map[string]
 }
 
 func saveLastOnlinePlayers(lastOnlinePlayers *LastOnlinePlayers) error {
+	path := getLastOnlinePlayersFilePath()
+	return utils.SaveJSON(path, lastOnlinePlayers)
+}
+
+func getLastOnlinePlayersFilePath() string {
 	path := os.Getenv("LAST_ONLINE_PLAYERS")
 	if path == "" {
 		path = lastOnlinePlayerFile
 	}
-	return utils.SaveJSON(path, lastOnlinePlayers)
+	return path
 }

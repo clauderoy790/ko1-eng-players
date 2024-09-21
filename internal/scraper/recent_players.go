@@ -17,7 +17,7 @@ var recentPlayers = make(map[string][]Player)
 
 func loadRecentPlayers() error {
 	recentPlayers = make(map[string][]Player)
-	b, err := os.ReadFile(recentPlayersFile)
+	b, err := os.ReadFile(getRecentPlayersPath())
 	if err != nil {
 		fmt.Printf("error loading recent players: %s\n", err.Error())
 		return nil
@@ -107,9 +107,14 @@ func saveRecentPlayers() error {
 		fmt.Printf("error sorting recent players: %s\n", err.Error())
 	}
 
+	path := getRecentPlayersPath()
+	return utils.SaveJSON(path, recentPlayers)
+}
+
+func getRecentPlayersPath() string {
 	path := os.Getenv("RECENT_PLAYERS")
 	if path == "" {
 		path = recentPlayersFile
 	}
-	return utils.SaveJSON(path, recentPlayers)
+	return path
 }
