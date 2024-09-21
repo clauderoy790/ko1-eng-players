@@ -9,7 +9,7 @@ import (
 	"github.com/clauderoy790/ko1-eng-players/internal/utils"
 )
 
-const recentPlayersFile = "../../recent-players.json"
+const recentPlayersFile = "recent-players.json"
 
 var recentPlayers = make(map[string][]Player)
 
@@ -18,6 +18,7 @@ func loadRecentPlayers() error {
 	b, err := os.ReadFile(recentPlayersFile)
 	if err != nil {
 		fmt.Printf("error loading recent players: %s\n", err.Error())
+		return nil
 	}
 
 	if err = json.Unmarshal(b, &recentPlayers); err != nil {
@@ -28,9 +29,7 @@ func loadRecentPlayers() error {
 
 func addRecentPlayers(players map[string][]Player) {
 	for server, pl := range players {
-		for _, p := range pl {
-			recentPlayers[server] = append(recentPlayers[server], p)
-		}
+		recentPlayers[server] = append(recentPlayers[server], pl...)
 	}
 }
 
@@ -77,14 +76,5 @@ func updateRecentPlayersLastSeenForDisplay(now *time.Time) {
 }
 
 func saveRecentPlayers() error {
-	b, err := json.Marshal(recentPlayers)
-	if err != nil {
-		return fmt.Errorf("error marshalling previous players: %w", err)
-	}
-
-	if err := os.WriteFile(recentPlayersFile, b, 0644); err != nil {
-		return fmt.Errorf("error saving to file: %s, err: %w", recentPlayersFile, err)
-	}
-
-	return nil
+	return utils.SaveJSON(recentPlayersFile, recentPlayers)
 }

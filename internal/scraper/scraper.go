@@ -1,6 +1,7 @@
 package scraper
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"io"
@@ -15,25 +16,6 @@ import (
 	"github.com/clauderoy790/ko1-eng-players/internal/utils"
 )
 
-type Player struct {
-	Name      string `json:"name"`
-	Location  string `json:"location"`
-	NationImg string `json:"nationImg"`
-	LastSeen  string `json:"lastSeen"`
-}
-
-type ServerData struct {
-	Server        string
-	OnlinePlayers []Player
-	RecentPlayer  []Player
-}
-
-type PageData struct {
-	UpdatedAt     string
-	OnlinePlayers map[string][]Player
-	RecentPlayers map[string][]Player
-	Servers       []string
-}
 
 // sometimes server is displayed differently so we keep track of that
 var serverMap = map[string][]string{
@@ -124,8 +106,7 @@ func scrapeCurrentPlayers() (map[string][]Player, error) {
 				nationImg = "./internal/ui/elmo.gif"
 			}
 
-			players := players[serverKey]
-			players = append(players, Player{
+			players[serverKey] = append(players[serverKey], Player{
 				Name:      strings.TrimSpace(playerName),
 				Location:  strings.TrimSpace(location),
 				NationImg: nationImg,
@@ -138,8 +119,6 @@ func scrapeCurrentPlayers() (map[string][]Player, error) {
 
 // GenerateHTML generates the HTML page for all servers
 func GenerateHTML() error {
-	var servers []string
-
 	now := utils.Now()
 
 	lastOnline, err := loadLastOnlinePlayers()
@@ -162,6 +141,11 @@ func GenerateHTML() error {
 
 	// add player that are now offline to the recent list
 	nowOffline := getOfflinePlayers(&lastOnline, currentPlayers)
+
+	// set the players last seen date to last update
+	setLastSeenDate(lastOnline.UpdateTime, nowOffline)
+
+	// add the offline players as revent
 	addRecentPlayers(nowOffline)
 
 	// remove any player that has been offline for more than a month
@@ -183,12 +167,24 @@ func GenerateHTML() error {
 	// update recent player last seen to be nicely displayed
 	updateRecentPlayersLastSeenForDisplay(now)
 
+	var servers []string
+	for k, _ := range serverMap {
+		servers = append(servers, k)
+	}
+
 	// Prepare the page data
 	data := PageData{
 		UpdatedAt:     utils.TimeToString(now),
 		OnlinePlayers: currentPlayers,
 		RecentPlayers: recentPlayers,
 		Servers:       servers,
+	}
+
+	b, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		fmt.Println("error marshaling PageData: ", data)
+	} else {
+		fmt.Printf("Using PageData: \n %s \n", string(b))
 	}
 
 	// Parse and execute the template

@@ -24,7 +24,7 @@ jobs:
     - name: Run Go scraper
       run: go run ./cmd/ko1-eng-players
 
-    # Create a clean gh-pages branch with only index.html and internal/ui folder
+    # Create a clean gh-pages branch with only index.html, internal/ui folder, and the new JSON files
     - name: Deploy to gh-pages
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -33,16 +33,20 @@ jobs:
         # Switch to a new clean gh-pages branch
         git checkout --orphan gh-pages
         
-        # Move index.html and internal/ui folder to a safe location
+        # Move index.html, internal/ui folder, and the JSON files to a safe location
         mkdir -p ./deploy/ui
-        cp -r ./internal/ui/* ./deploy/ui/  # Copy the UI files to the deploy folder
-        cp index.html ./deploy/             # Copy the index.html to the deploy folder
+        cp -r ./internal/ui/* ./deploy/ui/      # Copy the UI files to the deploy folder
+        cp index.html ./deploy/                 # Copy index.html to the deploy folder
+        cp last-online-players.json ./deploy/   # Copy last-online-players.json to the deploy folder
+        cp recent-players.json ./deploy/        # Copy recent-players.json to the deploy folder
         
         # Remove all tracked files
         git rm -rf .
         
-        # Move index.html and internal/ui back from the deploy folder
+        # Move index.html, internal/ui, and the JSON files back from the deploy folder
         mv ./deploy/index.html ./index.html
+        mv ./deploy/last-online-players.json ./last-online-players.json
+        mv ./deploy/recent-players.json ./recent-players.json
         mkdir -p ./internal/ui
         mv ./deploy/ui/* ./internal/ui/     # Move the UI files back to internal/ui
         
@@ -51,8 +55,10 @@ jobs:
         
         # Add the required files to the gh-pages branch
         git add index.html
+        git add last-online-players.json
+        git add recent-players.json
         git add internal/ui
         
         # Commit and force push to the gh-pages branch
-        git commit -m "Update players list"
+        git commit -m "Update index.html and players list JSON files"
         git push origin gh-pages --force

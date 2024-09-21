@@ -5,9 +5,11 @@ import (
 	"fmt"
 	"os"
 	"time"
+
+	"github.com/clauderoy790/ko1-eng-players/internal/utils"
 )
 
-const lastOnlinePlayerFile = "../../last-online-players.json"
+const lastOnlinePlayerFile = "last-online-players.json"
 
 type LastOnlinePlayers struct {
 	UpdateTime *time.Time
@@ -21,25 +23,13 @@ func loadLastOnlinePlayers() (LastOnlinePlayers, error) {
 	b, err := os.ReadFile(lastOnlinePlayerFile)
 	if err != nil {
 		fmt.Printf("error loading last online players: %s\n", err.Error())
+		return lastOnline, nil
 	}
 
 	if err = json.Unmarshal(b, &lastOnline); err != nil {
 		return lastOnline, fmt.Errorf("error unmarshalling last online json: %w", err)
 	}
 	return lastOnline, nil
-}
-
-func saveLastOnlinePlayers(lastOnlinePlayers *LastOnlinePlayers) error {
-	b, err := json.Marshal(lastOnlinePlayers)
-	if err != nil {
-		return fmt.Errorf("error marshalling players: %w", err)
-	}
-
-	if err := os.WriteFile(lastOnlinePlayerFile, b, 0644); err != nil {
-		return fmt.Errorf("error saving to file: %s, err: %w", lastOnlinePlayerFile, err)
-	}
-
-	return nil
 }
 
 // get the players that were online but are now offline
@@ -58,4 +48,8 @@ func getOfflinePlayers(lastOnline *LastOnlinePlayers, currentPlayers map[string]
 	}
 
 	return nowOffline
+}
+
+func saveLastOnlinePlayers(lastOnlinePlayers *LastOnlinePlayers) error {
+	return utils.SaveJSON(lastOnlinePlayerFile, lastOnlinePlayers)
 }
