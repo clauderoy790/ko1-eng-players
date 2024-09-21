@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KO1 English-speaking Players</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #f0f0f0;
-    }
-    h1 {
-      color: #333;
-    }
-    select {
-      padding: 10px;
-      margin: 20px 0;
-      font-size: 16px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
-    }
-    th, td {
-      padding: 12px;
-      text-align: left;
-    }
-    th {
-      background-color: #4CAF50;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-    .server-section {
-      margin-bottom: 40px;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>KO1 English-speaking Players</h1>
-  <p>Updated at: {{.UpdatedAt}}</p>
-
-  <div id="combo" class="server-section">
-    <label for="server-select">Select Server:</label>
-    <select id="server-select" onchange="onServerChange()">
-      {{range .Servers}}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KO1 English-speaking Players</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+      h1,
+      h2 {
+        color: #333;
+      }
+      select {
+        padding: 10px;
+        margin: 20px 0;
+        font-size: 16px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .server-section {
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>KO1 English-speaking Players</h1>
+    <p>Updated at: {{.UpdatedAt}}</p>
+    <div id="combo" class="server-section">
+      <label for="server-select">Select Server:</label>
+      <select id="server-select" onchange="onServerChange()">
+        {{range .Servers}}
         <option value="{{.}}">{{.}}</option>
-      {{end}}
-    </select>
-  </div>
+        {{end}}
+      </select>
+    </div>
 
-  {{range .ServersData}}
-    <div id="{{.Server}}" class="server-section">
+    {{range .Servers}}
+    <div id="{{.}}" class="server-section">
+      <h2>Online Players</h2>
       <table>
         <thead>
           <tr>
@@ -68,44 +71,76 @@
           </tr>
         </thead>
         <tbody>
-          {{if .Players}}
-            {{range .Players}}
-              <tr>
-                <td>{{.Name}}</td>
-                <td>{{.Location}}</td>
-                <td><img src="{{.NationImg}}" alt="Nation Image" style="width: 24px; height: 24px;"></td>
-              </tr>
-            {{end}}
-          {{else}}
-            <tr>
-              <td colspan="3">No players found.</td>
-            </tr>
+          {{if index $.OnlinePlayers .}} {{range index $.OnlinePlayers .}}
+          <tr>
+            <td>{{.Name}}</td>
+            <td>{{.Location}}</td>
+            <td>
+              <img
+                src="{{.NationImg}}"
+                alt="Nation Image"
+                style="width: 24px; height: 24px"
+              />
+            </td>
+          </tr>
+          {{end}} {{else}}
+          <tr>
+            <td colspan="3">No one is online right now.</td>
+          </tr>
+          {{end}}
+        </tbody>
+      </table>
+
+      <h2>Recently Online Players</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Location</th>
+            <th>Nation</th>
+            <th>Last Seen</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{if index $.RecentPlayers .}} {{range index $.RecentPlayers .}}
+          <tr>
+            <td>{{.Name}}</td>
+            <td>{{.Location}}</td>
+            <td>
+              <img
+                src="{{.NationImg}}"
+                alt="Nation Image"
+                style="width: 24px; height: 24px"
+              />
+            </td>
+            <td>{{.LastSeen}}</td>
+          </tr>
+          {{end}} {{else}}
+          <tr>
+            <td colspan="4">No one was online recently.</td>
+          </tr>
           {{end}}
         </tbody>
       </table>
     </div>
-  {{end}}
+    {{end}}
 
-  <script>
-    function onServerChange() {
-      const server = document.getElementById('server-select').value;
-      const sections = document.querySelectorAll('.server-section');
-
-      sections.forEach((section) => {
-        const id = section.getAttribute('id');
-        if (id === 'combo') { return; } // skip combo box
-
-        if (id === server) {
-          section.style.display = 'block';
-        } else {
-          section.style.display = 'none';
-        }
-      });
-    }
-
-    // Default server to show
-    onServerChange();
-  </script>
-
-</body>
+    <script>
+      function onServerChange() {
+        const server = document.getElementById('server-select').value;
+        const sections = document.querySelectorAll('.server-section');
+        sections.forEach((section) => {
+          const id = section.getAttribute('id');
+          if (id === 'combo') { return; } // skip combo box
+          if (id === server) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      }
+      // Default server to show
+      onServerChange();
+    </script>
+  </body>
 </html>

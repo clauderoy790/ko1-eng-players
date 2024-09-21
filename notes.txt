@@ -1,0 +1,12 @@
+load last online
+load current player
+load previous player
+calculate last online vs current delta (who's not there)
+update previous player (current players, who's not there)
+    - remove all curent players from previous
+    - add who's not there to the list
+updadate last seen
+save previous player
+
+for ui:
+have all the ui under a div with id = energekon id = otuken so we can hide depending on combo box

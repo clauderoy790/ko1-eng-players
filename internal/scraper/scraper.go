@@ -12,23 +12,27 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/clauderoy790/ko1-eng-players/internal/utils"
 )
 
 type Player struct {
-	Name      string
-	Location  string
-	NationImg string
+	Name      string `json:"name"`
+	Location  string `json:"location"`
+	NationImg string `json:"nationImg"`
+	LastSeen  string `json:"lastSeen"`
 }
 
 type ServerData struct {
-	Server  string
-	Players []Player
+	Server        string
+	OnlinePlayers []Player
+	RecentPlayer  []Player
 }
 
 type PageData struct {
-	UpdatedAt   string
-	ServersData []ServerData
-	Servers     []string
+	UpdatedAt     string
+	OnlinePlayers map[string][]Player
+	RecentPlayers map[string][]Player
+	Servers       []string
 }
 
 // sometimes server is displayed differently so we keep track of that
@@ -41,8 +45,9 @@ const nbRetries = 5
 const retryInSeconds = 10
 const clientTimeoutSeconds = 30
 
-// scrapePlayers scrapes player data for the selected server
-func scrapePlayers(server string) ([]Player, error) {
+// scrapeCurrentPlayers scrapes site data to find current players
+func scrapeCurrentPlayers() (map[string][]Player, error) {
+	players := make(map[string][]Player)
 	var err error
 	url := "https://knightonline1.com/?p=kim_nerede"
 
@@ -90,29 +95,41 @@ func scrapePlayers(server string) ([]Player, error) {
 		return nil, fmt.Errorf("failed to parse HTML: %v", err)
 	}
 
-	var players []Player
 	doc.Find("table.ko1-table tbody tr").Each(func(index int, row *goquery.Selection) {
 		// check that server is valid
 		serverName := strings.TrimSpace(row.Find("td").Eq(0).Text())
-		if slices.Contains(serverMap[server], serverName) {
-			// Check if the player speaks English by looking for the en.gif flag
-			flagImg, exists := row.Find("img").Attr("src")
-			if exists && strings.Contains(flagImg, "en.gif") {
-				// Extract the player's name and location
-				playerName := row.Find("td").Eq(3).Find("a").Text()
-				location := row.Find("td").Eq(1).Text()
-				nation, _ := row.Find("td").Eq(6).Find("img").Attr("src")
-				nationImg := "./internal/ui/karus.gif"
-				if strings.Contains(nation, "elmo") {
-					nationImg = "./internal/ui/elmo.gif"
-				}
-
-				players = append(players, Player{
-					Name:      strings.TrimSpace(playerName),
-					Location:  strings.TrimSpace(location),
-					NationImg: nationImg,
-				})
+		serverKey := ""
+		for key, serverNames := range serverMap {
+			if slices.Contains(serverNames, serverName) {
+				serverKey = key
+				break
 			}
+		}
+
+		// cant find server
+		if serverKey == "" {
+			fmt.Println("Cannot find server name in server map: ", serverKey)
+			return
+		}
+
+		// Check if the player speaks English by looking for the en.gif flag
+		flagImg, exists := row.Find("img").Attr("src")
+		if exists && strings.Contains(flagImg, "en.gif") {
+			// Extract the player's name and location
+			playerName := row.Find("td").Eq(3).Find("a").Text()
+			location := row.Find("td").Eq(1).Text()
+			nation, _ := row.Find("td").Eq(6).Find("img").Attr("src")
+			nationImg := "./internal/ui/karus.gif"
+			if strings.Contains(nation, "elmo") {
+				nationImg = "./internal/ui/elmo.gif"
+			}
+
+			players := players[serverKey]
+			players = append(players, Player{
+				Name:      strings.TrimSpace(playerName),
+				Location:  strings.TrimSpace(location),
+				NationImg: nationImg,
+			})
 		}
 	})
 
@@ -122,30 +139,56 @@ func scrapePlayers(server string) ([]Player, error) {
 // GenerateHTML generates the HTML page for all servers
 func GenerateHTML() error {
 	var servers []string
-	var serversData []ServerData
 
-	for server, _ := range serverMap {
-		servers = append(servers, server)
+	now := utils.Now()
 
-		// Scrape players for each server
-		players, err := scrapePlayers(server)
-		if err != nil {
-			return fmt.Errorf("error scraping players for server: %s, err: %w", server, err)
-		}
-		log.Printf("Found %d players for server: %s", len(players), server)
-
-		serversData = append(serversData, ServerData{
-			Server:  server,
-			Players: players,
-		})
+	lastOnline, err := loadLastOnlinePlayers()
+	if err != nil {
+		return fmt.Errorf("error loading last online players: %w", err)
 	}
 
+	if err = loadRecentPlayers(); err != nil {
+		return fmt.Errorf("error loading recent players: %w", err)
+	}
+
+	// Scrape currentPlayers for each server
+	currentPlayers, err := scrapeCurrentPlayers()
+	if err != nil {
+		return fmt.Errorf("error loading current players: %w", err)
+	}
+
+	// remove any player that is currently online from the recent list
+	removeRecentPlayers(currentPlayers)
+
+	// add player that are now offline to the recent list
+	nowOffline := getOfflinePlayers(&lastOnline, currentPlayers)
+	addRecentPlayers(nowOffline)
+
+	// remove any player that has been offline for more than a month
+	removeExpiredRecentPlayers(now, time.Hour*24*30)
+
+	// save the current players as the last online
+	lastOnline = LastOnlinePlayers{
+		UpdateTime: now,
+		Players:    currentPlayers,
+	}
+	if err = saveLastOnlinePlayers(&lastOnline); err != nil {
+		return fmt.Errorf("error saving last online players: %w", err)
+	}
+
+	if err = saveRecentPlayers(); err != nil {
+		return fmt.Errorf("error saving recent players: %w", err)
+	}
+
+	// update recent player last seen to be nicely displayed
+	updateRecentPlayersLastSeenForDisplay(now)
+
 	// Prepare the page data
-	location, _ := time.LoadLocation("America/New_York") // Load the EST time zone
 	data := PageData{
-		UpdatedAt:   time.Now().In(location).Format(time.RFC1123),
-		ServersData: serversData,
-		Servers:     servers,
+		UpdatedAt:     utils.TimeToString(now),
+		OnlinePlayers: currentPlayers,
+		RecentPlayers: recentPlayers,
+		Servers:       servers,
 	}
 
 	// Parse and execute the template
