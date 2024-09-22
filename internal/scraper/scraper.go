@@ -160,8 +160,8 @@ func GenerateHTML() error {
 	// add the offline players as revent
 	addRecentPlayers(nowOffline)
 
-	// remove any player that has been offline for more than a month
-	removeExpiredRecentPlayers(now, time.Hour*24*30)
+	// remove any player that have been offline for more than a week
+	removeExpiredRecentPlayers(now, time.Hour*24*7)
 
 	// save the current players as the last online
 	lastOnline = LastOnlinePlayers{
