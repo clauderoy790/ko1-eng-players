@@ -2,7 +2,7 @@
 
 This project is a web-based tracker for **Knight Online** English-speaking players. It scrapes data from the Knight Online website to display a list of players who are currently online or were recently active, categorized by server. The data is updated every 5 minutes using a cron job.
 
-### URL to the live project: [KO1 English Players Tracker](https://your-github-username.github.io/ko1-eng-players/)
+### URL to the live project: [KO1 English Players Tracker](https://clauderoy790.github.io/ko1-eng-players/)
 
 ## Features
 
