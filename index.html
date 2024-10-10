@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KO1 English-speaking Players</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        h1 {
+            color: #ff3333;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            background-color: #2a2a2a;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+        th {
+            background-color: #ff3333;
+            color: white;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #333;
+        }
+        tr:hover {
+            background-color: #444;
+        }
+        .server-section {
+            margin-bottom: 40px;
+            display: none;
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #333;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            color: #e0e0e0;
+            margin: 0 5px;
+            border-radius: 4px;
+        }
+        .tab:hover {
+            background-color: #444;
+        }
+        .tab.active {
+            background-color: #ff3333;
+            color: white;
+        }
+        .table-container {
+            display: none;
+        }
+        .table-container.active {
+            display: block;
+        }
+        #server-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        #server-tabs .tab {
+            margin: 5px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 40px;
+            padding: 10px;
+            border-top: 1px solid #444;
+        }
+        footer a {
+            color: #ff3333;
+            text-decoration: none;
+            cursor: default;
+        }
+        footer a:visited {
+            color: #ff3333;
+            cursor: default;
+        }
+        footer a:hover {
+            color: #ff3333;
+            cursor: default;
+        }
+        footer a:active {
+            color: #ff3333;
+            cursor: default;
+        }
+        img {
+            vertical-align: middle;
+        }
+        .github-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        .github-link:hover {
+            color: #ff3333;
+        }
+        .github-link i {
+            margin-right: 5px;
+        }
+        @media (max-width: 600px) {
+            .github-link {
+                top: 5px;
+                right: 5px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://github.com/clauderoy790/ko1-eng-players/" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> View on GitHub
+        </a>
+        <h1>KO1 English-speaking Players</h1>
+        <p>Updated at: Thu, 10 Oct 2024 19:11:55 EDT</p>
+        <div id="server-tabs" class="tab-container">
+            
+            <button class="tab" onclick="switchServer(this, 'Otuken')">Otuken</button>
+            
+            <button class="tab" onclick="switchServer(this, 'Ergenekon')">Ergenekon</button>
+            
+        </div>
+        
+        <div id="Otuken" class="server-section">
+            <div class="tab-container">
+                <button class="tab active" onclick="switchTab(this, 'online-Otuken')">
+                    Currently Online (0)
+                </button>
+                <button class="tab" onclick="switchTab(this, 'recent-Otuken')">
+                    Recently Active (39)
+                </button>
+            </div>
+            <div id="online-Otuken" class="table-container active">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Player Name</th>
+                            <th>Location</th>
+                            <th>Nation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <tr>
+                                <td colspan="3">No one is online right now.</td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div id="recent-Otuken" class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Player Name</th>
+                            <th>Location</th>
+                            <th>Nation</th>
+                            <th>Last Seen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            
+                            <tr>
+                                <td>Nebula</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>18 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>iKiLLz</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>18 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Kosula</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>18 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Makaka</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>18 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>BeastMode</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>18 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>LadyG4g4</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>18 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>FlyingMonkey</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>18 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Pomerzz</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>20 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Heraclea</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>20 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>_GODRIC_</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>22 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Gangman:s</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>22 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Rhaenyra</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>PuNkMaN</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ShadowRogue</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>RomaBukin</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>FightFireWithFIre</td>
+                                <td>ELMORAD CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>TYRANUS</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>VarietyJones</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>IIIIIHIIIII</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Freda</td>
+                                <td>ELMORAD CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Marmouette</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>xNYchris</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>PARKER</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>SpacerOneR</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Astra</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Lucydrop</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ILIKGOTLU</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>iHealz</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Leprosy</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>MadButcher</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Caribec</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>FriendlyAlchemist</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>RedAndWhite</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>FriendlyChemist</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Archonte</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Arianna</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Seraphine</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Shazam</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Bank1</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>6 days ago</td>
+                            </tr>
+                            
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div id="Ergenekon" class="server-section">
+            <div class="tab-container">
+                <button class="tab active" onclick="switchTab(this, 'online-Ergenekon')">
+                    Currently Online (14)
+                </button>
+                <button class="tab" onclick="switchTab(this, 'recent-Ergenekon')">
+                    Recently Active (54)
+                </button>
+            </div>
+            <div id="online-Ergenekon" class="table-container active">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Player Name</th>
+                            <th>Location</th>
+                            <th>Nation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            
+                            <tr>
+                                <td>DHL</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Orhan_Gencebay</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>_NoMercy_</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>iKiLLz</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Bazarov</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>CasCasTine</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Hiung_un</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>PiPi</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Pomerzz</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ROTASIZPAZAR1</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ROTASIZ_KAPTAN</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>TheSem</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>YasayanBalyoz</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>aLmanyaLee</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                            </tr>
+                            
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div id="recent-Ergenekon" class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Player Name</th>
+                            <th>Location</th>
+                            <th>Nation</th>
+                            <th>Last Seen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            
+                            <tr>
+                                <td>DapperBandit</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 hour ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>GODRIC</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 hour ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>lJexucShawnz</td>
+                                <td>BATTLE ARENA</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Cobas0666</td>
+                                <td>ESLANT ELMORAD</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>TOMMYSHELBY</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Mataly</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>SCHARFRICHTER</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>O</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>mukankagann</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ShadowDeath</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>DoqaLI</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>7 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>OppieHeimer</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>8 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>SuperMan</td>
+                                <td>ELMORAD CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>11 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Zipacma</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>11 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Hayzom</td>
+                                <td>ELMORAD CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>12 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Dutti</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>18 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>RemixWinona</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>19 hours ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>BoxBunny</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Heidi</td>
+                                <td>ELMORAD CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>theGOAT</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Pm:DapperBandit</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>SiiiUUU</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Skullcrusher</td>
+                                <td>ELMORAD CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>1 day ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>_____Jack_____</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>llTasiyicill</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>NoBodyKnowMe</td>
+                                <td>ESLANT ELMORAD</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>BURSASPOR1963</td>
+                                <td>BATTLE ARENA</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>2 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>QuetzaIcoatl</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>nonna</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>IamZel3aNix</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>CursedALFA</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>_Spike_</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Ghengis</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>zagordark</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>3 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>OttomanEmpire</td>
+                                <td>DELOS</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>BilememKardess</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>_T_U_R_B_O_</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KAZBEEEEEEK</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Massimo</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Massimo2</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>IIIIIIII4You</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>JohannaSvensson</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Doqalll</td>
+                                <td>ESLANT ELMORAD</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>LordWampiRRR</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Tasiiyici</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>4 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ArchAngeL</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Bakki</td>
+                                <td>LUFERSON CASTLE</td>
+                                <td>
+                                    <img src="./internal/ui/karus.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Jack_Danger</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>HannaSvensson</td>
+                                <td>COLONY ZONE</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>CedriC</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>SofiaSvensson</td>
+                                <td>MORADON</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>5 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>The_Ugly</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>6 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>LastOttoman</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>6 days ago</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KayraHan</td>
+                                <td>ABYSS</td>
+                                <td>
+                                    <img src="./internal/ui/elmo.gif" alt="Nation Image" style="width: 24px; height: 24px" />
+                                </td>
+                                <td>6 days ago</td>
+                            </tr>
+                            
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
+        <footer>
+          Made by <a href="https://github.com/clauderoy790">Claude<sup>2</sup></a>. On the road to upgrading an <a href="https://wiki.korehberi.com/index.php/Iron_Impact">Iron Impact</a> to +10.
+        </footer>
+    </div>
+
+    <script>
+        function switchServer(tabElement, serverId) {
+            document.querySelectorAll('#server-tabs .tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.server-section').forEach(section => section.style.display = 'none');
+            tabElement.classList.add('active');
+            document.getElementById(serverId).style.display = 'block';
+            localStorage.setItem('selectedServer', serverId);
+        }
+
+        function switchTab(tabElement, contentId) {
+            const parentSection = tabElement.closest('.server-section');
+            parentSection.querySelectorAll('.tab-container .tab').forEach(tab => tab.classList.remove('active'));
+            parentSection.querySelectorAll('.table-container').forEach(container => container.classList.remove('active'));
+            tabElement.classList.add('active');
+            document.getElementById(contentId).classList.add('active');
+        }
+
+        function loadSelectedServer() {
+            const savedServer = localStorage.getItem('selectedServer');
+            const serverTabs = document.querySelectorAll('#server-tabs .tab');
+            let selectedTab = savedServer && document.getElementById(savedServer) 
+                ? Array.from(serverTabs).find(tab => tab.textContent === savedServer)
+                : serverTabs[0];
+            switchServer(selectedTab, selectedTab.textContent);
+        }
+
+        window.onload = loadSelectedServer;
+    </script>
+</body>
+</html>
