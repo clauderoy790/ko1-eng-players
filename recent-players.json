@@ -1,0 +1,485 @@
+{
+  "Ergenekon": [
+    {
+      "name": "SCHARFRICHTER",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Thu, 17 Oct 2024 18:42:29 EDT"
+    },
+    {
+      "name": "TamTamx",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 17:37:10 EDT"
+    },
+    {
+      "name": "Pm:DapperBandit",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 16:58:26 EDT"
+    },
+    {
+      "name": "Dutti",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Thu, 17 Oct 2024 16:58:26 EDT"
+    },
+    {
+      "name": "O",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 16:27:22 EDT"
+    },
+    {
+      "name": "_____Jack_____",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 16:27:22 EDT"
+    },
+    {
+      "name": "Heidi",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 16:27:22 EDT"
+    },
+    {
+      "name": "Jerrsonek",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 15:53:50 EDT"
+    },
+    {
+      "name": "lJexucShawnz",
+      "location": "JURAID",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 15:53:50 EDT"
+    },
+    {
+      "name": "KuzguNNNNNNN",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 15:47:01 EDT"
+    },
+    {
+      "name": "CursedKAZBEEEEEEK",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Thu, 17 Oct 2024 15:12:54 EDT"
+    },
+    {
+      "name": "_SHUIIIII",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 14:50:37 EDT"
+    },
+    {
+      "name": "gerdek_basan",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 14:24:28 EDT"
+    },
+    {
+      "name": "_Bam_Bam_",
+      "location": "ABYSS",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 13:59:31 EDT"
+    },
+    {
+      "name": "Gecenin4u5",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 12:14:49 EDT"
+    },
+    {
+      "name": "FREY4",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 09:58:08 EDT"
+    },
+    {
+      "name": "No_One",
+      "location": "ABYSS",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 06:58:12 EDT"
+    },
+    {
+      "name": "DHL",
+      "location": "ABYSS",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 06:32:24 EDT"
+    },
+    {
+      "name": "Orhan_Gencebay",
+      "location": "ABYSS",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Thu, 17 Oct 2024 06:32:24 EDT"
+    },
+    {
+      "name": "IplikciiNedim",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Thu, 17 Oct 2024 06:10:23 EDT"
+    },
+    {
+      "name": "TOMMYSHELBY",
+      "location": "ABYSS",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Thu, 17 Oct 2024 03:16:41 EDT"
+    },
+    {
+      "name": "PiPi",
+      "location": "ABYSS",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Thu, 17 Oct 2024 03:16:41 EDT"
+    },
+    {
+      "name": "TheSem",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Wed, 16 Oct 2024 15:57:20 EDT"
+    },
+    {
+      "name": "BilememKardess",
+      "location": "ESLANT ELMORAD",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Wed, 16 Oct 2024 14:13:56 EDT"
+    },
+    {
+      "name": "Mataly",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Wed, 16 Oct 2024 12:36:30 EDT"
+    },
+    {
+      "name": "PlugMyDuck",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Wed, 16 Oct 2024 02:56:56 EDT"
+    },
+    {
+      "name": "Baleron",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Wed, 16 Oct 2024 02:49:52 EDT"
+    },
+    {
+      "name": "Seneca",
+      "location": "LUFERSON CASTLE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 21:13:19 EDT"
+    },
+    {
+      "name": "Mitz",
+      "location": "ESLANT KARUS",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 21:13:19 EDT"
+    },
+    {
+      "name": "IamZel3aNix",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 17:29:28 EDT"
+    },
+    {
+      "name": "MySQL",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Tue, 15 Oct 2024 16:59:54 EDT"
+    },
+    {
+      "name": "ANGMAR",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 16:59:54 EDT"
+    },
+    {
+      "name": "Ibq",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 15:40:59 EDT"
+    },
+    {
+      "name": "CedriC",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Tue, 15 Oct 2024 15:40:59 EDT"
+    },
+    {
+      "name": "SiiiUUU",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 15:25:49 EDT"
+    },
+    {
+      "name": "THOMASSHELBY",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 14:58:34 EDT"
+    },
+    {
+      "name": "DoqaLL",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Tue, 15 Oct 2024 10:31:18 EDT"
+    },
+    {
+      "name": "S_H_R_E_D_D_E_R",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Tue, 15 Oct 2024 09:42:25 EDT"
+    },
+    {
+      "name": "CursedSOBEEE",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 09:03:53 EDT"
+    },
+    {
+      "name": "OppieHeimer",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 08:36:48 EDT"
+    },
+    {
+      "name": "MEHMET_KARAHANLI",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 06:21:20 EDT"
+    },
+    {
+      "name": "Skullcrusher",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Tue, 15 Oct 2024 06:21:20 EDT"
+    },
+    {
+      "name": "Meruem",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 05:52:40 EDT"
+    },
+    {
+      "name": "Ceko",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Tue, 15 Oct 2024 05:38:28 EDT"
+    },
+    {
+      "name": "LeonA",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Tue, 15 Oct 2024 05:38:28 EDT"
+    },
+    {
+      "name": "StellWoman",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 05:09:22 EDT"
+    },
+    {
+      "name": "AA",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Tue, 15 Oct 2024 04:54:18 EDT"
+    },
+    {
+      "name": "oPorto",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Mon, 14 Oct 2024 22:10:04 EDT"
+    },
+    {
+      "name": "ROTASIZPAZAR1",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Mon, 14 Oct 2024 16:55:46 EDT"
+    },
+    {
+      "name": "ROTASIZ_KAPTAN",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Mon, 14 Oct 2024 16:48:34 EDT"
+    },
+    {
+      "name": "Hiung_un",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Mon, 14 Oct 2024 16:41:33 EDT"
+    },
+    {
+      "name": "CyberRogue",
+      "location": "DELOS",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Mon, 14 Oct 2024 16:32:09 EDT"
+    },
+    {
+      "name": "inLightningMONICA",
+      "location": "JURAID",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Mon, 14 Oct 2024 15:58:56 EDT"
+    },
+    {
+      "name": "_NeverDieAlone_",
+      "location": "ESLANT ELMORAD",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Mon, 14 Oct 2024 11:30:03 EDT"
+    },
+    {
+      "name": "ZeTH",
+      "location": "ESLANT KARUS",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Mon, 14 Oct 2024 11:13:54 EDT"
+    },
+    {
+      "name": "Nikol",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Mon, 14 Oct 2024 08:59:22 EDT"
+    },
+    {
+      "name": "ShyWolf",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Mon, 14 Oct 2024 06:46:02 EDT"
+    },
+    {
+      "name": "AegisOfFaith",
+      "location": "ESLANT ELMORAD",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Mon, 14 Oct 2024 03:57:28 EDT"
+    },
+    {
+      "name": "wenwu",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Sun, 13 Oct 2024 18:45:12 EDT"
+    },
+    {
+      "name": "iplikci_nedim",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sun, 13 Oct 2024 18:28:08 EDT"
+    },
+    {
+      "name": "CasCasTine",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Sun, 13 Oct 2024 17:48:26 EDT"
+    },
+    {
+      "name": "A7X",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sun, 13 Oct 2024 16:57:08 EDT"
+    },
+    {
+      "name": "Lounge",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sun, 13 Oct 2024 15:35:27 EDT"
+    },
+    {
+      "name": "zagordark",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sun, 13 Oct 2024 15:27:32 EDT"
+    },
+    {
+      "name": "4lKARAHANl",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sun, 13 Oct 2024 15:17:53 EDT"
+    },
+    {
+      "name": "Cobas0666",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Sun, 13 Oct 2024 12:45:16 EDT"
+    },
+    {
+      "name": "TommyVercetti",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sun, 13 Oct 2024 12:45:16 EDT"
+    },
+    {
+      "name": "NIZAMETTIN_GUVENC",
+      "location": "ESLANT KARUS",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sun, 13 Oct 2024 12:16:08 EDT"
+    },
+    {
+      "name": "Christina",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Sun, 13 Oct 2024 11:50:03 EDT"
+    },
+    {
+      "name": "Doqal",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Sun, 13 Oct 2024 09:38:41 EDT"
+    },
+    {
+      "name": "BattleStar",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Sun, 13 Oct 2024 09:12:46 EDT"
+    },
+    {
+      "name": "Li0n",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sat, 12 Oct 2024 20:38:46 EDT"
+    },
+    {
+      "name": "Vafu",
+      "location": "MORADON",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sat, 12 Oct 2024 16:36:18 EDT"
+    },
+    {
+      "name": "Caligo",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sat, 12 Oct 2024 14:57:31 EDT"
+    },
+    {
+      "name": "Ghengis",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Sat, 12 Oct 2024 13:54:48 EDT"
+    },
+    {
+      "name": "IIIIIIII4You",
+      "location": "ABYSS",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Sat, 12 Oct 2024 07:08:14 EDT"
+    },
+    {
+      "name": "_NoMercy_",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Fri, 11 Oct 2024 23:55:16 EDT"
+    },
+    {
+      "name": "Cry",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Fri, 11 Oct 2024 12:56:33 EDT"
+    },
+    {
+      "name": "SuperMan",
+      "location": "ELMORAD CASTLE",
+      "nationImg": "./internal/ui/elmo.gif",
+      "lastSeen": "Fri, 11 Oct 2024 05:44:28 EDT"
+    },
+    {
+      "name": "ShadowDeath",
+      "location": "COLONY ZONE",
+      "nationImg": "./internal/ui/karus.gif",
+      "lastSeen": "Thu, 10 Oct 2024 23:36:11 EDT"
+    }
+  ],
+  "Otuken": []
+}
