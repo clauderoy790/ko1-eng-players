@@ -1,0 +1,103 @@
+{
+  "UpdateTime": "2024-10-21T15:19:55.489387183-04:00",
+  "Players": {
+    "Ergenekon": [
+      {
+        "name": "NoBodyKnows",
+        "location": "ABYSS",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "No_One",
+        "location": "ABYSS",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "TYRANUS",
+        "location": "CLEVER GÖREVI KARUS",
+        "nationImg": "./internal/ui/karus.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "DapperBandit",
+        "location": "COLONY ZONE",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "HerBokolog",
+        "location": "COLONY ZONE",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "IamZel3aNix",
+        "location": "COLONY ZONE",
+        "nationImg": "./internal/ui/karus.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "MySQL",
+        "location": "COLONY ZONE",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "SCHARFRICHTER",
+        "location": "COLONY ZONE",
+        "nationImg": "./internal/ui/karus.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "lJexucShawnz",
+        "location": "COLONY ZONE",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "TOMMYSHELBY",
+        "location": "LUFERSON CASTLE",
+        "nationImg": "./internal/ui/karus.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Bazarov",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "IplikciiNedim",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/karus.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Jammer",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "TamTamx",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "YasayanBalyoz",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "aLmanyaLee",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      }
+    ]
+  }
+}
