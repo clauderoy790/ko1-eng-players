@@ -1,0 +1,85 @@
+{
+  "UpdateTime": "2024-10-24T20:59:06.779381941-04:00",
+  "Players": {
+    "Ergenekon": [
+      {
+        "name": "DHL",
+        "location": "ABYSS",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Ferdi_Tayfur",
+        "location": "ABYSS",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Orhan_Gencebay",
+        "location": "ABYSS",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Gecenin4u5",
+        "location": "ESLANT ELMORAD",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Bazarov",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "DapperBandit",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "IplikciiNedim",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/karus.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Jammer",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "KAZBEEEEEEK",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/karus.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Massimo",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "Massimo2",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/karus.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "YasayanBalyoz",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      },
+      {
+        "name": "aLmanyaLee",
+        "location": "MORADON",
+        "nationImg": "./internal/ui/elmo.gif",
+        "lastSeen": ""
+      }
+    ]
+  }
+}
